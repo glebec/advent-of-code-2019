@@ -6,7 +6,14 @@ masses :: [Int]
 masses = read <$> lines raw
 
 getFuel :: Int -> Int
-getFuel f = f `quot` 3 - 2
+getFuel mass = max 0 (mass `quot` 3 - 2)
+
+getTotalFuel :: Int -> Int
+getTotalFuel mass
+    | mass <= 0 = mass
+    | otherwise =
+        let thisFuel = getFuel mass
+        in  thisFuel + getTotalFuel thisFuel
 
 result :: Int
-result = sum $ getFuel <$> masses
+result = sum $ getTotalFuel <$> masses
