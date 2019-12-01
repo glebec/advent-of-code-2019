@@ -1,0 +1,30 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: b0460a8de6deafbaed3a756ef07b2cad11ae07f1b0b4b0f393322f76dfac7d19
+
+name:           advent-of-code-y2019
+version:        0.1.0.0
+category:       Web
+homepage:       https://github.com/glebec/advent-of-code-y2019#readme
+author:         Gabriel Lebec
+maintainer:     glebec@gmail.com
+copyright:      2019 Gabriel Lebec
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+executable advent-of-code-y2019
+  main-is: Main.hs
+  other-modules:
+      Paths_advent_of_code_y2019
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010

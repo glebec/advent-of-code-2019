@@ -1,0 +1,20 @@
+name:                advent-of-code-y2019
+version:             0.1.0.0
+#synopsis:
+#description:
+homepage:            https://github.com/glebec/advent-of-code-y2019#readme
+license:             BSD3
+author:              Gabriel Lebec
+maintainer:          glebec@gmail.com
+copyright:           2019 Gabriel Lebec
+category:            Web
+extra-source-files:
+- README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+
+executables:
+  advent-of-code-y2019:
+    source-dirs:      src
+    main:             Main.hs
