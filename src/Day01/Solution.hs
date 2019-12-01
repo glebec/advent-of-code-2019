@@ -1,4 +1,4 @@
-module Day01.Solution (result) where
+module Day01.Solution (result1, result2) where
 
 import Day01.Input (raw)
 
@@ -6,14 +6,11 @@ masses :: [Int]
 masses = read <$> lines raw
 
 getFuel :: Int -> Int
-getFuel mass = max 0 (mass `quot` 3 - 2)
+getFuel mass = mass `quot` 3 - 2
 
 getTotalFuel :: Int -> Int
-getTotalFuel mass
-    | mass <= 0 = mass
-    | otherwise =
-        let thisFuel = getFuel mass
-        in  thisFuel + getTotalFuel thisFuel
+getTotalFuel mass = sum . tail $ takeWhile (> 0) $ iterate getFuel mass
 
-result :: Int
-result = sum $ getTotalFuel <$> masses
+result1, result2 :: Int
+result1 = sum $ getFuel <$> masses
+result2 = sum $ getTotalFuel <$> masses
