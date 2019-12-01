@@ -13,8 +13,16 @@ extra-source-files:
 
 dependencies:
   - base >= 4.7 && < 5
+  - raw-strings-qq
 
 executables:
   advent-of-code-y2019:
     source-dirs:      src
     main:             Main.hs
+
+ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wredundant-constraints
