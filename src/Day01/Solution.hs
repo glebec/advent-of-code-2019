@@ -9,7 +9,7 @@ getFuel :: Int -> Int
 getFuel mass = mass `quot` 3 - 2
 
 getTotalFuel :: Int -> Int
-getTotalFuel = sum . tail . takeWhile (> 0) . iterate getFuel
+getTotalFuel = sum . takeWhile (> 0) . iterate getFuel . getFuel
 
 result1, result2 :: Int
 result1 = sum $ getFuel <$> masses
