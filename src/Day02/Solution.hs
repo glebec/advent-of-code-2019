@@ -4,6 +4,7 @@
 module Day02.Solution (result1, result2) where
 
 import Data.Function ((&))
+import Data.Maybe (catMaybes, fromJust)
 
 import Data.IntMap.Strict (IntMap)
 import qualified Data.IntMap.Strict as IM
@@ -14,6 +15,8 @@ import Day02.Input (raw)
 -- aliases
 
 type Instruction = Int
+type Noun = Int
+type Verb = Int
 type Address = Int
 type Program = IntMap Instruction
 
@@ -27,27 +30,27 @@ program = IM.fromDistinctAscList (zip [0..] programList)
     & IM.insert 1 12
     & IM.insert 2 2
 
--- solve
+-- solve part 1
 
-data Opcode = Add | Mult | Halt | Err Instruction deriving Show
+data Opcode = Add | Mult | Halt | Err deriving Show
 
 opcode :: Instruction -> Opcode
 opcode = \case
     1  -> Add
     2  -> Mult
     99 -> Halt
-    i  -> Err i
+    _  -> Err
 
 next :: Address -> Address
 next = (+4)
 
-run :: Program -> Int
+run :: Program -> Maybe Int
 run = go 0 where
-    go i prog = case opcode (IM.findWithDefault 99 i prog) of
+    go i prog = case opcode (IM.findWithDefault 0 i prog) of
         Add -> runAdd i prog & go (next i)
         Mult -> runMult i prog & go (next i)
-        Halt -> prog IM.! 0
-        e -> error $ "Unrecognized opcode. " ++ show e
+        Halt -> prog IM.!? 0
+        Err -> Nothing
 
 runAdd :: Address -> Program -> Program
 runAdd i prog =
@@ -68,6 +71,23 @@ getVals i prog =
         b = prog IM.! loc2
     in  (a, b, loc3)
 
-result1, result2 :: Int
-result1 = run program
-result2 = 0
+result1 :: Int
+result1 = fromJust $ run program
+
+-- solve part 2
+
+goal :: Int
+goal = 19690720
+
+halted :: [((Noun, Verb), Int)]
+halted = catMaybes $ do
+    noun <- [0..99]
+    verb <- [0..99]
+    let candidate = program & IM.insert 1 noun & IM.insert 2 verb
+    pure $ sequenceA ((noun, verb), run candidate)
+
+nounAndVerb :: (Noun, Verb)
+nounAndVerb = fst . head . filter (\(_, r) -> r == goal) $ halted
+
+result2 :: Int
+result2 = 100 * fst nounAndVerb + snd nounAndVerb
