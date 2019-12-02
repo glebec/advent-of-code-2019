@@ -13,7 +13,9 @@ extra-source-files:
 
 dependencies:
   - base >= 4.7 && < 5
+  - containers
   - raw-strings-qq
+  - split
 
 executables:
   advent-of-code-y2019:

@@ -13,7 +13,7 @@ This project uses [Stack](https://docs.haskellstack.org). Assuming you have Stac
 Day | Prompt | Solution
 ----|--------|---------
 1   | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [src/Day01/Solution.hs](src/Day01/Solution.hs)
-2   | |
+2   | [1202 Program Alarm](https://adventofcode.com/2019/day/2) | [src/Day02/Solution.hs](src/Day02/Solution.hs)
 3   | |
 4   | |
 5   | |

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 528ffa6893053ef6d9f34cba895a96639320c8ed7b14c35bf46502b065dc163d
+-- hash: 069ac5289173a320e3012cb2242cec134553df25eece979499c9535aa841668a
 
 name:           advent-of-code-y2019
 version:        0.1.0.0
@@ -24,11 +24,15 @@ executable advent-of-code-y2019
   other-modules:
       Day01.Input
       Day01.Solution
+      Day02.Input
+      Day02.Solution
       Paths_advent_of_code_y2019
   hs-source-dirs:
       src
   ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , containers
     , raw-strings-qq
+    , split
   default-language: Haskell2010
