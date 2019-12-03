@@ -14,7 +14,7 @@ Day | Prompt | Solution
 ----|--------|---------
 1   | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [src/Day01/Solution.hs](src/Day01/Solution.hs)
 2   | [1202 Program Alarm](https://adventofcode.com/2019/day/2) | [src/Day02/Solution.hs](src/Day02/Solution.hs)
-3   | |
+3   | [Crossed Wires](https://adventofcode.com/2019/day/3) | [src/Day03/Solution.hs](src/Day03/Solution.hs)
 4   | |
 5   | |
 6   | |
