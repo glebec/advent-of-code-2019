@@ -31,7 +31,7 @@ trace :: [Move] -> [Coords]
 trace = go (0, 0) where
     go xy [] = [xy]
     go xy@(x, y) (move:ms') = case move of
-        Move _ d | d == 0 -> go xy ms'
+        Move _ 0 -> go xy ms'
         Move U d -> xy : go (x, y + 1) (Move U (d - 1) : ms')
         Move D d -> xy : go (x, y - 1) (Move D (d - 1) : ms')
         Move L d -> xy : go (x - 1, y) (Move L (d - 1) : ms')
