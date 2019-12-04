@@ -8,7 +8,7 @@ import Day03.Input (raw)
 
 -- parse
 
-data Direction = U | D | L | R deriving (Eq, Read)
+data Direction = U | D | L | R deriving Read
 data Move = Move Direction Int
 
 parseMove :: String -> Move
@@ -27,15 +27,16 @@ moves = case parseMoves <$> lines raw of
 
 type Coords = (Int, Int)
 
+toSteps :: [Move] -> [Direction]
+toSteps ms = ms >>= \(Move dir dist) -> replicate dist dir
+
 trace :: [Move] -> [Coords]
-trace = go (0, 0) where
-    go xy [] = [xy]
-    go xy@(x, y) (move:ms') = case move of
-        Move _ 0 -> go xy ms'
-        Move U d -> xy : go (x, y + 1) (Move U (d - 1) : ms')
-        Move D d -> xy : go (x, y - 1) (Move D (d - 1) : ms')
-        Move L d -> xy : go (x - 1, y) (Move L (d - 1) : ms')
-        Move R d -> xy : go (x + 1, y) (Move R (d - 1) : ms')
+trace ms = scanl go (0, 0) (toSteps ms) where
+    go (x, y) step = case step of
+        U -> (x, y + 1)
+        D -> (x, y - 1)
+        L -> (x + 1, y)
+        R -> (x - 1, y)
 
 wire1, wire2 :: Set Coords
 wire1 = Set.fromList . tail . trace $ fst moves
