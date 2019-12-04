@@ -12,7 +12,7 @@ twoAdjacentSame = check . show where
 
 onlyTwoAdjacentSame :: Int -> Bool
 onlyTwoAdjacentSame = check . show where
-    check s = elem 2 . fmap length $ group s
+    check = elem 2 . fmap length . group
 
 monotonicUp :: Int -> Bool
 monotonicUp = check . show where
@@ -27,3 +27,9 @@ result1 = length . filter (isSixDigits <&&> twoAdjacentSame <&&> monotonicUp) $ 
 
 result2 :: Int
 result2 = length . filter (isSixDigits <&&> onlyTwoAdjacentSame <&&> monotonicUp) $ [low..high]
+
+-- alternative ways to deal with multiple predicates, credit to github.com/mstksg
+
+-- altSolutionA, altSolutionB :: Int
+-- altSolutionA = length . filter (and . sequence [isSixDigits, twoAdjacentSame, monotonicUp]) $ [low..high]
+-- altSolutionB = length . filter (\x -> all ($x) [isSixDigits, twoAdjacentSame, monotonicUp]) $ [low..high]
