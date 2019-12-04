@@ -10,4 +10,4 @@ main = do
     putStrLn $ "Day 01: " ++ show D01.result1 ++ " " ++ show D01.result2
     putStrLn $ "Day 02: " ++ show D02.result1 ++ " " ++ show D02.result2
     putStrLn $ "Day 03: " ++ show D03.result1 ++ " " ++ show D03.result2
-    putStrLn $ "Day 04: " ++ show D04.result1
+    putStrLn $ "Day 04: " ++ show D04.result1 ++ " " ++ show D04.result2
