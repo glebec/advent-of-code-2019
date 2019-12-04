@@ -1,8 +1,8 @@
 module Day03.Solution (result1, result2) where
 
 import Data.List.Split (splitOn)
-import Data.Set (Set)
-import qualified Data.Set as Set
+import Data.Map.Strict (Map)
+import qualified Data.Map as Map
 
 import Day03.Input (raw)
 
@@ -38,18 +38,21 @@ trace ms = scanl go (0, 0) (toSteps ms) where
         L -> (x + 1, y)
         R -> (x - 1, y)
 
-wire1, wire2 :: Set Coords
-wire1 = Set.fromList . tail . trace $ fst moves
-wire2 = Set.fromList . tail . trace $ snd moves
+toGridOfMinSteps :: [Move] -> Map Coords Int
+toGridOfMinSteps = Map.fromListWith const . tail . flip zip [0..] . trace
 
-crossings :: Set Coords
-crossings = Set.intersection wire1 wire2
+wire1, wire2 :: Map Coords Int
+wire1 = toGridOfMinSteps $ fst moves
+wire2 = toGridOfMinSteps $ snd moves
 
-manhattanDistances :: Set Int
-manhattanDistances = Set.map (\(x, y) -> abs x + abs y) crossings
+crossings :: Map Coords Int
+crossings = Map.intersectionWith (+) wire1 wire2
+
+manhattanDistances :: Map Coords Int
+manhattanDistances = Map.mapWithKey (\(x, y) _ -> abs x + abs y) crossings
 
 result1 :: Int
-result1 = head . Set.toAscList $ manhattanDistances
+result1 = snd . head . Map.toAscList $ manhattanDistances
 
 result2 :: Int
-result2 = undefined
+result2 = minimum . fmap snd . Map.toList $ crossings
