@@ -17,7 +17,7 @@ Day | Prompt | Solution
 3   | [Crossed Wires](https://adventofcode.com/2019/day/3) | [src/Day03/Solution.hs](src/Day03/Solution.hs)
 4   | [Secure Container](https://adventofcode.com/2019/day/4) | [src/Day04/Solution.hs](src/Day04/Solution.hs)
 5   | |
-6   | |
+6   | [Universal Orbit Map](https://adventofcode.com/2019/day/6) | [src/Day06/Solution.hs](src/Day06/Solution.hs)
 7   | |
 8   | |
 9   | |
