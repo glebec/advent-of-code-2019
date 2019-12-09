@@ -13,4 +13,4 @@ main = do
     putStrLn $ "Day 03: " ++ show D03.result1 ++ " " ++ show D03.result2
     putStrLn $ "Day 04: " ++ show D04.result1 ++ " " ++ show D04.result2
     putStrLn "Day 05: TODO"
-    putStrLn $ "Day 06: " ++ show D06.result1
+    putStrLn $ "Day 06: " ++ show D06.result1 ++ " " ++ show D06.result2
