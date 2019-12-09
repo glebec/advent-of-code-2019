@@ -19,7 +19,7 @@ Day | Prompt | Solution
 5   | |
 6   | [Universal Orbit Map](https://adventofcode.com/2019/day/6) | [src/Day06/Solution.hs](src/Day06/Solution.hs)
 7   | |
-8   | |
+8   | [Space Image Format](https://adventofcode.com/2019/day/8) | [src/Day08/Solution.hs](src/Day08/Solution.hs)
 9   | |
 10  | |
 11  | |

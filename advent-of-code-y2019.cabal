@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 594f74826283096c859cb57f949c573d2c63a43623c92e75dd11709104ee2755
+-- hash: 6376bed8ba3dfd5579b6712d25ffb7b0fb6b6bc76ae1be98cb80ca56dee8ddd8
 
 name:           advent-of-code-y2019
 version:        0.1.0.0
@@ -32,6 +32,8 @@ executable advent-of-code-y2019
       Day04.Solution
       Day06.Input
       Day06.Solution
+      Day08.Input
+      Day08.Solution
       Paths_advent_of_code_y2019
   hs-source-dirs:
       src
